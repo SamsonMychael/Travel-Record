@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MySubscription.ViewModel"
+             Title="Update ?"
+             x:Class="MySubscription.Views.UpdatePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:UpdateVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                     IconImageSource="save.png"
+                     BindingContext="{StaticResource vm}"
+                     Command="{Binding UpdateCommand}"
+                     CommandParameter="{Binding Name}"/>
+    </ContentPage.ToolbarItems>
+    
+    
+    <StackLayout   Margin="16" BindingContext="{StaticResource vm}">
+        <Entry Placeholder="Name" Text="{Binding Name ,Mode=TwoWay}"/>
+        <StackLayout  Orientation="Horizontal">
+            <Label Text="Is Visited?" VerticalOptions="Center"/>
+            <CheckBox IsChecked="{Binding IsActive , Mode=TwoWay}"/>
+            
+        </StackLayout>
+        <StackLayout Margin="0,7">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="VenueName :" TextColor="Gray"/>
+                <Label Text="{Binding VenueName}" FontAttributes="Bold" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Longitude :" TextColor="Gray"/>
+                <Label Text=  "{Binding Longitude }"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Distance : " TextColor="Gray"/>
+                <Label Text="{Binding Distance , StringFormat='{0} m'}" TextColor="Red"/>
+            </StackLayout>
+        </StackLayout>
+        <Button Text="Delete" Command="{Binding DeleteCommand}" Style="{StaticResource destructiveButton}"/>
+    </StackLayout>
+</ContentPage>

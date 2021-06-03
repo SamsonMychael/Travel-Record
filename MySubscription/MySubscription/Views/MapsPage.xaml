@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" 
+             xmlns:vm="clr-namespace:MySubscription.ViewModel"
+             x:Class="MySubscription.Views.MapsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:SignOutVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  Text="save" BindingContext="{StaticResource vm}" IconImageSource="logg.png"
+                     Command="{Binding SignoutCommand}"/>
+    </ContentPage.ToolbarItems>
+
+
+
+
+
+    <StackLayout>
+        <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,0,0,-5"/>
+        <maps:Map x:Name="locationmap"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+                  />
+    </StackLayout>
+
+</ContentPage>
